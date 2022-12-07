@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 def get_movies(url):
     #country_lists = ['de','ar','es','ie','gb','us']
     page = requests.get(url)
-    soup = BeautifulSoup(page.text,parser='lxml', features='lxml')
+    soup = BeautifulSoup(page.text, features='lxml')
     results = list()
     for link in soup.find_all('a'):
       if '/tt' in link.get('href') and not ('vote' in link.get('href')) and not ('plotsummary' in link.get('href')):

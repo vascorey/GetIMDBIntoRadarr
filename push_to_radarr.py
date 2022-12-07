@@ -27,13 +27,13 @@ for m in movies_to_add:
 		print(a)
 	if movie.id == None:
 		if check_excluded(movie.title):
-			print(f"{movie} is excluded")
+			print(f"{datetime.datetime.now()} || {movie} is excluded")
 		else:
 			try:
-				print(f"Add movie: {movie}")
+				print(f"{datetime.datetime.now()} || Add movie: {movie}")
 				movie.add(root_folder=1, minimum_availability='released', quality_profile='Any', tags=['addedByRadarrScript'])
 			except ArrException as a:
 				print(a)
 	else:
-		print(f"Movie already exists: {movie}")
+		print(f"{datetime.datetime.now()} || Movie already exists: {movie}")
 print()

@@ -1,3 +1,5 @@
+import datetime
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -13,12 +15,12 @@ def get_movies(url):
         results.append(link.get('href').split("/")[2])
     for link in soup.find_all('a'):
       if 'Next »' in link.text:
-        print(f"Next Page! {link.get('href')}")
+        print(f"{datetime.datetime.now()}Next Page! {link.get('href')}")
         results.extend(get_movies(f"https://www.imdb.com/{link.get('href')}"))
         break
     # Make results unique, convert to dict, and then to list
     results = list(dict.fromkeys(results))
-    print(f"# of results: {len(results)}")
+    print(f"{datetime.datetime.now()}# of results: {len(results)}")
     return results
 
 def get_cool_movies():
